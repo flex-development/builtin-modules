@@ -1,7 +1,7 @@
 {
   "name": "@flex-development/builtin-modules",
   "description": "Universal drop-in replacement for module.builtinModules",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "keywords": [
     "builtin",
     "module",
