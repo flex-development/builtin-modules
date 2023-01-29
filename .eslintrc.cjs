@@ -10,8 +10,7 @@
  */
 const config = {
   root: true,
-  extends: ['./.eslintrc.base.cjs'],
-  overrides: [...require('./.eslintrc.base.cjs').overrides]
+  extends: ['./.eslintrc.base.cjs']
 }
 
 module.exports = config
