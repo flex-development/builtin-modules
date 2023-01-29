@@ -1169,8 +1169,6 @@ __metadata:
     "@vitest/ui": "npm:0.28.3"
     add-stream: "npm:1.0.0"
     chai: "npm:4.3.7"
-    chai-each: "npm:0.0.1"
-    chai-quantifiers: "npm:1.0.17"
     conventional-changelog: "npm:3.1.25"
     conventional-changelog-core: "npm:4.2.4"
     conventional-changelog-writer: "npm:5.0.1"
@@ -2925,22 +2923,6 @@ __metadata:
   version: 7.0.1
   resolution: "camelcase@npm:7.0.1"
   checksum: 8cc1909d4219769e835180fde379b5caeff681336506f9c4474b76a7ba0fe8eda4a183b3d05c09c39a118d8a44c384cf8a93e4326c655a82d03ded87a4eea829
-  languageName: node
-  linkType: hard
-
-"chai-each@npm:0.0.1":
-  version: 0.0.1
-  resolution: "chai-each@npm:0.0.1"
-  checksum: 545be493fb9eace3aea28ef9556a0433dd1467bd0bf96d1bb50212c0f12b833ae033fd50b56b6ca739a58868fab060ef794bca14da3b36347f4f8574d66fc2a8
-  languageName: node
-  linkType: hard
-
-"chai-quantifiers@npm:1.0.17":
-  version: 1.0.17
-  resolution: "chai-quantifiers@npm:1.0.17"
-  peerDependencies:
-    chai: ^4.x.x
-  checksum: 9e1c4af526998af9a862917c426ac0ff48560f1ab03ff97ef67ed65b88b2dad0d2af8a2f9315a55fbc434d77b1f82ecf5aa16b15453fa33dcad7f4a5266cb3ca
   languageName: node
   linkType: hard
 

@@ -3,4 +3,4 @@
  * @module builtin-modules
  */
 
-export {}
+export { default as builtinModules } from './builtin-modules'
