@@ -1,6 +1,7 @@
 # builtin-modules
 
 [![npm](https://img.shields.io/npm/v/@flex-development/builtin-modules.svg)](https://npmjs.com/package/@flex-development/builtin-modules)
+[![codecov](https://codecov.io/github/flex-development/builtin-modules/branch/main/graph/badge.svg?token=Rh9xvcgqdD)](https://codecov.io/github/flex-development/builtin-modules)
 [![module type: esm](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
 [![license](https://img.shields.io/github/license/flex-development/builtin-modules.svg)](LICENSE.md)
 [![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits&logoColor=ffffff)](https://conventionalcommits.org/)
