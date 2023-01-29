@@ -55,7 +55,44 @@ yarn add @flex-development/builtin-modules@flex-development/builtin-modules
 
 ## Use
 
-**TODO**: usage example.
+```typescript
+import { builtinModules } from '@flex-development/builtin-modules'
+
+/**
+ * Set containing the names of modules provided by Node.js.
+ *
+ * **Note**: Includes [`node:` URLs][1].
+ *
+ * [1]: https://nodejs.org/api/esm.html#node-imports
+ *
+ * @const {Set<string>} BUILTIN_MODULES
+ */
+const BUILTIN_MODULES = new Set(builtinModules.flatMap(m => [m, 'node:' + m]))
+
+/**
+ * Checks if the given module `name` is the name of a [builtin module][1].
+ *
+ * Allows for [`node:` URLs][2].
+ *
+ * [1]: https://nodejs.org/api/esm.html#builtin-modules
+ * [2]: https://nodejs.org/api/esm.html#node-imports
+ *
+ * @example
+ *  isBuiltin('node:module') // true
+ * @example
+ *  isBuiltin('fs/promises') // true
+ * @example
+ *  isBuiltin('@flex-development/builtin-modules') // false
+ *
+ * @param {string} name - Module name to evaluate
+ * @return {boolean} `true` if `name` is name of builtin module
+ */
+const isBuiltin = (name: string): boolean => BUILTIN_MODULES.has(name)
+
+console.debug(isBuiltin('node:module'))
+console.debug(isBuiltin('fs/promises'))
+console.debug(isBuiltin('@flex-development/builtin-modules'))
+```
 
 ## API
 
