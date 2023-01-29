@@ -26,6 +26,10 @@
 # scope labels
 # project-specific groups for issues, pull requests, and discussions
 
+- name: scope:builtins
+  description: node.js builtin modules
+  color: 74cefc
+
 - name: scope:dependencies
   description: dependency updates
   color: 74cefc
