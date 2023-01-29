@@ -18,6 +18,7 @@ Universal drop-in replacement for [`module.builtinModules`][1]
 - [Install](#install)
 - [Use](#use)
 - [API](#api)
+  - [`builtinModules`](#builtinmodules)
 - [Types](#types)
 - [Related](#related)
 - [Contribute](#contribute)
@@ -28,8 +29,8 @@ This package is a universal drop-in replacement for the [`builtinModules`][1] co
 
 ## When should I use this?
 
-This package exports an array containing all modules provided by Node.js. It can be used to not only verify a Node.js
-module, but to also determine if a module can be imported using the [`node:`][3] protocol.
+This package exports an array containing the names of modules provided by Node.js. It can be used to not only verify
+that a module is maintained by Node.js, but to also determine if a module can be imported using a [`node:` URL][3].
 
 ## Install
 
@@ -58,7 +59,20 @@ yarn add @flex-development/builtin-modules@flex-development/builtin-modules
 
 ## API
 
-**TODO**: api documentation.
+This package exports the identifier `builtinModules`.
+
+There is no default export.
+
+### `builtinModules`
+
+An array containing the names of modules provided by Node.js.
+
+The array is a **superset** of [`module.builtinModules`][1] given the running version of Node.js.
+
+Possible use cases:
+
+- Check if a module can be imported using a [`node:` URL][3]
+- Check if a module is maintained by Node.js
 
 ## Types
 

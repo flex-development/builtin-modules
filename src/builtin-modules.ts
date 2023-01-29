@@ -4,14 +4,18 @@
  */
 
 /**
- * Names of modules provided by Node.js.
+ * Array containing the names of modules provided by Node.js.
+ *
+ * The array is a **superset** of [`module.builtinModules`][1] given the running
+ * version of Node.js.
  *
  * Possible use cases:
  *
- * - Check if a module can be imported using the [`node:`][1] protocol
+ * - Check if a module can be imported using a [`node:` URL][2]
  * - Check if a module is maintained by Node.js
  *
- * [1]: https://nodejs.org/api/esm.html#node-imports
+ * [1]: https://nodejs.org/api/module.html#modulebuiltinmodules
+ * [2]: https://nodejs.org/api/esm.html#node-imports
  *
  * @const {string[]} builtinModules
  */
