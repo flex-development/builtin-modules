@@ -20,6 +20,7 @@
         "exports",
         "github",
         "install",
+        "loader",
         "nvm",
         "patches",
         "pkg",
