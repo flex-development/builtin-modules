@@ -9,6 +9,7 @@
       2,
       "always",
       [
+        "build",
         "builtins",
         "deps",
         "deps-bundle",
