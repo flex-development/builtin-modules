@@ -47,8 +47,8 @@ const config = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx,
-      impliedStrict: true
+      impliedStrict: true,
+      jsx
     },
     emitDecoratorMetadata: tsconfig.compilerOptions.emitDecoratorMetadata,
     extraFileExtensions: [],
@@ -253,7 +253,7 @@ const config = {
         allowShortCircuit: true,
         allowTaggedTemplates: true,
         allowTernary: true,
-        enforceForJSX: jsx
+        enforceForJSX: true
       }
     ],
     '@typescript-eslint/no-unused-vars': [
@@ -339,7 +339,7 @@ const config = {
       1,
       {
         definedTags: ['experimental', 'next', 'visibleName'],
-        jsxTags: jsx
+        jsxTags: false
       }
     ],
     'jsdoc/check-types': [1, { unifyParentAndChildTypeChecks: true }],
@@ -1013,9 +1013,12 @@ const config = {
       },
       plugins: ['chai-expect', 'jest-formatting'],
       rules: {
+        '@typescript-eslint/ban-types': 0,
+        '@typescript-eslint/consistent-indexed-object-style': 0,
         '@typescript-eslint/no-base-to-string': 0,
         '@typescript-eslint/no-empty-function': 0,
         '@typescript-eslint/no-unused-expressions': 0,
+        '@typescript-eslint/prefer-ts-expect-error': 0,
         '@typescript-eslint/restrict-template-expressions': 0,
         '@typescript-eslint/unbound-method': 0,
         'chai-expect/missing-assertion': 2,
@@ -1059,6 +1062,7 @@ const config = {
     {
       files: ['.eslintrc.*'],
       rules: {
+        '@typescript-eslint/no-unsafe-member-access': 0,
         'sort-keys': 0,
         'unicorn/string-content': 0
       }
