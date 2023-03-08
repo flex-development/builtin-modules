@@ -1183,7 +1183,7 @@ __metadata:
     "@types/fs-extra": "npm:11.0.1"
     "@types/git-raw-commits": "npm:2.0.1"
     "@types/is-ci": "npm:3.0.0"
-    "@types/node": "npm:18.14.5"
+    "@types/node": "npm:18.14.6"
     "@types/node-notifier": "npm:8.0.2"
     "@types/prettier": "npm:2.7.2"
     "@types/semver": "npm:7.3.13"
@@ -2206,10 +2206,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:18.14.5":
+"@types/node@npm:*":
   version: 18.14.5
   resolution: "@types/node@npm:18.14.5"
   checksum: aed72b73fd01526654af9b2ac10afb070440c64c577503193ee9dde7222ad381b7b7ca0ca2aed771ea18497cba75b5d96fe32ce8702836b5c2ea3744eea5b03e
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:18.14.6":
+  version: 18.14.6
+  resolution: "@types/node@npm:18.14.6"
+  checksum: 4bbd9fe4cb1b31afe4f76b0b37fe51e46199dc57ab519811f61456cb267d7590323e6c687041f5a73872858d9eb64fdd158e9f669bbb36979d59ec7a91396dfa
   languageName: node
   linkType: hard
 
