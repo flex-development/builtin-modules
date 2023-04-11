@@ -75,6 +75,7 @@ const builtinModules: string[] = [
   'stream/web',
   'string_decoder',
   'sys',
+  'test/reporters',
   'timers',
   'timers/promises',
   'tls',
