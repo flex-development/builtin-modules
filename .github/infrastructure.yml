@@ -40,7 +40,6 @@ branches:
           - context: test (18)
           - context: test (19)
           - context: typescript (5.0.4)
-          - context: typescript (latest)
           - context: typescript (~4.9.0)
         strict: true
       restrictions: null

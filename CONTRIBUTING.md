@@ -168,13 +168,13 @@ This means every commit must conform to the following format:
  │     │      │
  │     │      └─⫸ optional breaking change flag
  │     │
- │     └─⫸ see .commitlintrc.json
+ │     └─⫸ see .commitlintrc.cts
  │
  └─⫸ build|ci|chore|docs|feat|fix|perf|refactor|revert|style|test|wip
 
 [body]
 
-[BREAKING CHANGE: <change>]
+[BREAKING-CHANGE: <change>]
 
 [footer(s)]
 ```
@@ -199,7 +199,7 @@ e.g:
 - `build(deps-dev): bump cspell from 6.7.0 to 6.8.0`
 - `perf: lighten initial load`
 
-See [`.commitlintrc.json`](.commitlintrc.json) to view all commit guidelines.
+See [`.commitlintrc.cts`](.commitlintrc.cts) to view all commit guidelines.
 
 ### Code Style
 
@@ -336,7 +336,7 @@ When squashing, be sure to follow [commit message standards](#commit-messages):
  │     │      │
  │     │      └─⫸ optional breaking change flag
  │     │
- │     └─⫸ see .commitlintrc.json
+ │     └─⫸ see .commitlintrc.cts
  │
  └─⫸ build|ci|chore|docs|feat|fix|perf|refactor|release|revert|style|test
 ```
