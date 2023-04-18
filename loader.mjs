@@ -123,6 +123,7 @@ export const load = async (url, context) => {
 
   return { format: context.format, shortCircuit: true, source }
 }
+
 /**
  * Resolves the given module `specifier`, and its module format as a hint to the
  * {@linkcode load} hook.
