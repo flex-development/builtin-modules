@@ -1,3 +1,20 @@
+## [2.1.0](https://github.com/flex-development/builtin-modules/compare/2.0.0...2.1.0) (2023-04-18)
+
+
+### :package: Build
+
+* **deps-dev:** Bump @typescript-eslint/eslint-plugin from 5.58.0 to 5.59.0 ([#98](https://github.com/flex-development/builtin-modules/issues/98)) ([d8c6e60](https://github.com/flex-development/builtin-modules/commit/d8c6e602fd9c2ccde8d34cd84ea4c1094b8a3622))
+* **deps-dev:** Bump @typescript-eslint/parser from 5.58.0 to 5.59.0 ([#99](https://github.com/flex-development/builtin-modules/issues/99)) ([d6ba3f3](https://github.com/flex-development/builtin-modules/commit/d6ba3f3543028595463b61b78705f03fff7e47b5))
+* **deps-dev:** Bump esbuild from 0.17.16 to 0.17.17 ([#97](https://github.com/flex-development/builtin-modules/issues/97)) ([ce413d7](https://github.com/flex-development/builtin-modules/commit/ce413d7bd40e2cb88ec81c95e4569c72a0caf282))
+* **deps-dev:** Bump eslint-plugin-jsdoc from 41.1.1 to 41.1.2 ([#95](https://github.com/flex-development/builtin-modules/issues/95)) ([a192db2](https://github.com/flex-development/builtin-modules/commit/a192db2c1d4b9b58c0a4cd84c5e024b75dd5da3a))
+* **deps-dev:** bump eslint-plugin-jsdoc from 41.1.2 to 43.0.3 ([3bce461](https://github.com/flex-development/builtin-modules/commit/3bce461e6222da2f30cb31ca9c1a2eeb8c7bd25a))
+* **deps-dev:** Bump semver from 7.4.0 to 7.5.0 ([#96](https://github.com/flex-development/builtin-modules/issues/96)) ([9ad6e95](https://github.com/flex-development/builtin-modules/commit/9ad6e95b448dea7bbb5c0cdad30e34624ba31a5a))
+
+
+### :sparkles: Features
+
+* **builtins:** support `node@20.0.0` ([f6412aa](https://github.com/flex-development/builtin-modules/commit/f6412aa0286116dd6dec00a6fe1c865c62e3a53e))
+
 ## [2.0.0](https://github.com/flex-development/builtin-modules/compare/1.0.0...2.0.0) (2023-04-14)
 
 

@@ -175,6 +175,7 @@ sade('changelog', true)
             { section: ':bug: Fixes', type: Type.FIX },
             { section: ':fire: Performance Improvements', type: Type.PERF },
             { section: ':mechanical_arm: Refactors', type: Type.REFACTOR },
+            { hidden: true, type: Type.RELEASE },
             { section: ':wastebasket: Reverts', type: Type.REVERT },
             { hidden: true, type: Type.STYLE },
             { section: ':white_check_mark: Testing', type: Type.TEST },
