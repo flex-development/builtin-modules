@@ -434,7 +434,6 @@ const config = {
         'jsdoc/match-description': 0,
         'jsdoc/match-name': 0,
         'jsdoc/multiline-blocks': 1,
-        'jsdoc/newline-after-description': [1, 'always'],
         'jsdoc/no-bad-blocks': [1, { preventAllMultiAsteriskBlocks: true }],
         'jsdoc/no-defaults': 0,
         'jsdoc/no-missing-syntax': 0,
@@ -557,9 +556,10 @@ const config = {
           1,
           'any',
           {
+            applyToEndTag: true,
             count: 1,
-            dropEndLines: true,
-            noEndLines: false,
+            endLines: 0,
+            startLines: 1,
             tags: {}
           }
         ],
@@ -1032,7 +1032,7 @@ const config = {
       }
     },
     {
-      files: '**/*.yml',
+      files: '**/*.+(yaml|yml)',
       parser: 'yaml-eslint-parser',
       plugins: ['yml'],
       rules: {
@@ -1132,14 +1132,15 @@ const config = {
       files: [
         '.github/dependabot.yml',
         '.github/workflows/*.yml',
-        'action.yml'
+        'action.yml',
+        'docker*.yml'
       ],
       rules: {
         'yml/sort-keys': 0
       }
     },
     {
-      files: ['.github/workflows/*.yml', '.yarnrc.yml'],
+      files: ['.github/workflows/*.yml', '.yarnrc.yml', 'docker*.yml'],
       rules: {
         'yml/key-name-casing': 0
       }
