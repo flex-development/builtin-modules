@@ -24,7 +24,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ampproject/remapping@npm:^2.2.0":
+"@ampproject/remapping@npm:^2.2.1":
   version: 2.2.1
   resolution: "@ampproject/remapping@npm:2.2.1"
   dependencies:
@@ -1053,7 +1053,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:5.59.5"
     "@typescript-eslint/parser": "npm:5.59.5"
     "@vates/toggle-scripts": "npm:1.0.0"
-    "@vitest/coverage-c8": "npm:0.31.0"
+    "@vitest/coverage-c8": "npm:0.32.0"
     "@vitest/ui": "npm:0.32.0"
     add-stream: "npm:1.0.0"
     chai: "npm:4.3.7"
@@ -2274,18 +2274,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-c8@npm:0.31.0":
-  version: 0.31.0
-  resolution: "@vitest/coverage-c8@npm:0.31.0"
+"@vitest/coverage-c8@npm:0.32.0":
+  version: 0.32.0
+  resolution: "@vitest/coverage-c8@npm:0.32.0"
   dependencies:
-    "@ampproject/remapping": "npm:^2.2.0"
+    "@ampproject/remapping": "npm:^2.2.1"
     c8: "npm:^7.13.0"
     magic-string: "npm:^0.30.0"
     picocolors: "npm:^1.0.0"
     std-env: "npm:^3.3.2"
   peerDependencies:
     vitest: ">=0.30.0 <1"
-  checksum: 49abc0e4fc7576ca934d08901862b2426abcddbf18d4d7f75bddd2ae98fde22db43181a483021c8f1ffb808d3cd3edc50badb297ef3493c827a93cd0c2412081
+  checksum: 1a8796e33fac5526fc1637cb2f70b0735fd9bfc970af049bbeb4fdbdb5106c75cd16202aa08a8a4ec6c540c8e82281178390c3f8ae9b3be343e8101c63534a7a
   languageName: node
   linkType: hard
 
