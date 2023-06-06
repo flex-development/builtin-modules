@@ -3051,14 +3051,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ci-info@npm:^3.1.0, ci-info@npm:^3.2.0":
-  version: 3.7.0
-  resolution: "ci-info@npm:3.7.0"
-  checksum: 60d4dcdc63c88a02beff01ec14a733128017d2388f86c5d6a931df7001d4a30f264040f2c6edfd0732fbfa79d624c1b76f6fbdad5e96315d491a1bf60cf424e4
-  languageName: node
-  linkType: hard
-
-"ci-info@npm:^3.8.0":
+"ci-info@npm:^3.1.0, ci-info@npm:^3.2.0, ci-info@npm:^3.8.0":
   version: 3.8.0
   resolution: "ci-info@npm:3.8.0"
   checksum: cbde5915261038659da39e508b688acd0baa981a73dc34357865957403383e0475b050c2f44971a3b37523849973af345724feb8f2e4a8eddd6db41be708f4ba
