@@ -3,8 +3,7 @@
  * @module tests/reporters/Notifier
  */
 
-import type { OneOrMany } from '@flex-development/tutils'
-import ci from 'is-ci'
+import { cast, isArray, type OneOrMany } from '@flex-development/tutils'
 import notifier from 'node-notifier'
 import type NotificationCenter from 'node-notifier/notifiers/notificationcenter'
 import { performance } from 'node:perf_hooks'
@@ -24,35 +23,31 @@ class Notifier implements Reporter {
    * Test reporter context.
    *
    * @public
-   * @instance
    * @member {Vitest} ctx
    */
-  public ctx: Vitest = {} as Vitest
+  public ctx!: Vitest
 
   /**
    * Test run end time (in milliseconds).
    *
    * @public
-   * @instance
    * @member {number} end
    */
-  public end: number = 0
+  public end!: number
 
   /**
    * Test run start time (in milliseconds).
    *
    * @public
-   * @instance
    * @member {number} start
    */
-  public start: number = 0
+  public start!: number
 
   /**
    * Sends a notification.
    *
-   * **Note**: Does nothing in CI environments.
-   *
    * @protected
+   *
    * @async
    *
    * @param {File[]} [files=this.ctx.state.getFiles()] - File objects
@@ -63,11 +58,8 @@ class Notifier implements Reporter {
     files: File[] = this.ctx.state.getFiles(),
     errors: unknown[] = this.ctx.state.getUnhandledErrors()
   ): Promise<void> {
-    // do nothing in ci environments
-    if (ci) return void ci
-
     /**
-     * Test objects.
+     * Tests that have been run.
      *
      * @const {Test[]} tests
      */
@@ -111,7 +103,7 @@ class Notifier implements Reporter {
       title = '\u274C Failed'
     } else {
       /**
-       * Total time to run all tests (in milliseconds).
+       * Time to run all tests (in milliseconds).
        *
        * @const {number} time
        */
@@ -119,8 +111,10 @@ class Notifier implements Reporter {
 
       message = dedent`
         ${passes} tests passed in ${
-        time > 1000 ? `${(time / 1000).toFixed(2)}ms` : `${Math.round(time)}ms`
-      }
+          time > 1000
+            ? `${(time / 1000).toFixed(2)}ms`
+            : `${Math.round(time)}ms`
+        }
       `
 
       title = '\u2705 Passed'
@@ -138,9 +132,10 @@ class Notifier implements Reporter {
   }
 
   /**
-   * Sends a notification after all tests have ran.
+   * Sends a notification after all tests have ran (in non ci/cd environments).
    *
    * @public
+   *
    * @async
    *
    * @param {File[]} [files=this.ctx.state.getFiles()] - File objects
@@ -165,7 +160,7 @@ class Notifier implements Reporter {
    */
   public onInit(context: Vitest): void {
     this.ctx = context
-    return void (this.start = performance.now())
+    return void ((this.start = performance.now()) && (this.end = 0))
   }
 
   /**
@@ -177,17 +172,13 @@ class Notifier implements Reporter {
    * @return {Test[]} `Test` object array
    */
   protected tests(tasks: OneOrMany<Task> = []): Test[] {
-    const { mode } = this.ctx
-
-    return (Array.isArray(tasks) ? tasks : [tasks]).flatMap(task => {
-      const { type } = task
-
-      return mode === 'typecheck' && type === 'suite' && task.tasks.length === 0
-        ? ([task] as unknown as [Test])
-        : type === 'test'
+    return (isArray<Task>(tasks) ? tasks : [tasks]).flatMap(task => {
+      return task.type === 'custom'
+        ? [cast(task)]
+        : task.type === 'test'
         ? [task]
         : 'tasks' in task
-        ? task.tasks.flatMap(t => (t.type === 'test' ? [t] : this.tests(t)))
+        ? task.tasks.flatMap(task => this.tests(task))
         : []
     })
   }

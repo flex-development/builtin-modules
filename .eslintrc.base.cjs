@@ -53,6 +53,7 @@ const config = {
       },
       plugins: [
         '@typescript-eslint',
+        'import',
         'jsdoc',
         'node',
         'prettier',
@@ -171,7 +172,6 @@ const config = {
           }
         ],
         '@typescript-eslint/no-dupe-class-members': 2,
-        '@typescript-eslint/no-duplicate-imports': 2,
         '@typescript-eslint/no-dynamic-delete': 2,
         '@typescript-eslint/no-empty-function': [
           2,
@@ -246,7 +246,7 @@ const config = {
             allowedNames: ['self']
           }
         ],
-        '@typescript-eslint/no-throw-literal': 2,
+        '@typescript-eslint/no-throw-literal': 0,
         '@typescript-eslint/no-type-alias': 0,
         '@typescript-eslint/no-unnecessary-boolean-literal-compare': [
           2,
@@ -352,7 +352,11 @@ const config = {
           2,
           {
             allowAny: false,
-            checkCompoundAssignments: false
+            allowBoolean: false,
+            allowNullish: false,
+            allowNumberAndString: true,
+            allowRegExp: false,
+            skipCompoundAssignments: true
           }
         ],
         '@typescript-eslint/restrict-template-expressions': [
@@ -366,7 +370,7 @@ const config = {
           }
         ],
         '@typescript-eslint/return-await': [2, 'in-try-catch'],
-        '@typescript-eslint/sort-type-union-intersection-members': 2,
+        '@typescript-eslint/sort-type-constituents': 2,
         '@typescript-eslint/strict-boolean-expressions': [
           2,
           {
@@ -394,6 +398,13 @@ const config = {
         '@typescript-eslint/unified-signatures': 2,
         'default-param-last': 0,
         eqeqeq: 1,
+        'import/no-duplicates': [
+          2,
+          {
+            considerQueryString: true,
+            'prefer-inline': true
+          }
+        ],
         'init-declarations': 0,
         'jsdoc/check-access': 1,
         'jsdoc/check-alignment': 1,
@@ -417,6 +428,7 @@ const config = {
           1,
           {
             definedTags: [
+              'decorator',
               'experimental',
               'maximum',
               'minimum',
@@ -572,6 +584,7 @@ const config = {
         'no-empty-function': 0,
         'no-ex-assign': 0,
         'no-extra-parens': 0,
+        'no-extra-semi': 0,
         'no-implied-eval': 0,
         'no-invalid-this': 0,
         'no-loop-func': 0,
@@ -581,6 +594,7 @@ const config = {
         'no-return-await': 0,
         'no-shadow': 0,
         'no-sparse-arrays': 0,
+        'no-throw-literal': 0,
         'no-unused-expressions': 0,
         'no-unused-vars': 0,
         'no-use-before-define': 0,
@@ -661,7 +675,7 @@ const config = {
             terms: ['@fixme', '@todo']
           }
         ],
-        'unicorn/explicit-length-check': 2,
+        'unicorn/explicit-length-check': 0,
         'unicorn/filename-case': [
           2,
           {
@@ -774,15 +788,8 @@ const config = {
             allowArgumentsExplicitlyTypedAsAny: true,
             allowDirectConstAssertionInArrowFunctions: true,
             allowHigherOrderFunctions: false,
-            allowTypedFunctionExpressions: true,
-            allowedNames: [],
-            shouldTrackReferences: true
-          }
-        ],
-        '@typescript-eslint/no-implicit-any-catch': [
-          2,
-          {
-            allowExplicitAny: false
+            allowTypedFunctionExpressions: false,
+            allowedNames: []
           }
         ],
         'no-undef': 0
@@ -835,6 +842,7 @@ const config = {
       },
       plugins: ['chai-expect', 'jest-formatting'],
       rules: {
+        '@typescript-eslint/class-literal-property-style': 0,
         '@typescript-eslint/consistent-indexed-object-style': 0,
         '@typescript-eslint/no-base-to-string': 0,
         '@typescript-eslint/no-empty-function': 0,
@@ -858,7 +866,6 @@ const config = {
         'promise/valid-params': 0,
         'unicorn/consistent-destructuring': 0,
         'unicorn/error-message': 0,
-        'unicorn/explicit-length-check': 0,
         'unicorn/no-array-for-each': 0,
         'unicorn/no-hex-escape': 0,
         'unicorn/no-useless-undefined': 0,
@@ -876,6 +883,12 @@ const config = {
       rules: {
         '@typescript-eslint/ban-types': 0,
         '@typescript-eslint/no-redundant-type-constituents': 0
+      }
+    },
+    {
+      files: ['**/decorators/*.constraint.ts', '**/*.decorator.ts'],
+      rules: {
+        '@typescript-eslint/ban-types': 0
       }
     },
     {
@@ -990,6 +1003,7 @@ const config = {
         '@typescript-eslint/naming-convention': 0,
         '@typescript-eslint/no-base-to-string': 0,
         '@typescript-eslint/no-confusing-void-expression': 0,
+        '@typescript-eslint/no-duplicate-type-constituents': 0,
         '@typescript-eslint/no-floating-promises': 0,
         '@typescript-eslint/no-for-in-array': 0,
         '@typescript-eslint/no-implied-eval': 0,
@@ -1006,12 +1020,14 @@ const config = {
         '@typescript-eslint/no-unsafe-argument': 0,
         '@typescript-eslint/no-unsafe-assignment': 0,
         '@typescript-eslint/no-unsafe-call': 0,
+        '@typescript-eslint/no-unsafe-enum-comparison': 0,
         '@typescript-eslint/no-unsafe-member-access': 0,
         '@typescript-eslint/no-unsafe-return': 0,
         '@typescript-eslint/no-unused-expressions': 0,
         '@typescript-eslint/non-nullable-type-assertion-style': 0,
         '@typescript-eslint/prefer-includes': 0,
         '@typescript-eslint/prefer-nullish-coalescing': 0,
+        '@typescript-eslint/prefer-optional-chain': 0,
         '@typescript-eslint/prefer-readonly': 0,
         '@typescript-eslint/prefer-readonly-parameter-types': 0,
         '@typescript-eslint/prefer-reduce-type-parameter': 0,
@@ -1132,15 +1148,14 @@ const config = {
       files: [
         '.github/dependabot.yml',
         '.github/workflows/*.yml',
-        'action.yml',
-        'docker*.yml'
+        'action.yml'
       ],
       rules: {
         'yml/sort-keys': 0
       }
     },
     {
-      files: ['.github/workflows/*.yml', '.yarnrc.yml', 'docker*.yml'],
+      files: ['.github/workflows/*.yml', '.yarnrc.yml'],
       rules: {
         'yml/key-name-casing': 0
       }
@@ -1152,6 +1167,13 @@ const config = {
     'prettier/prettier': [2, {}, { usePrettierrc: true }]
   },
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.cts', '.mts', '.ts', '.tsx']
+    },
+    'import/resolver': {
+      node: true,
+      typescript: true
+    },
     jsdoc: {
       augmentsExtendsReplacesDocs: true,
       ignoreInternal: false,
@@ -1159,12 +1181,20 @@ const config = {
       implementsReplacesDocs: true,
       overrideReplacesDocs: true,
       preferredTypes: {
-        '*': false
+        '*': false,
+        '.<>': false,
+        'Array<>': { replacement: '[]' },
+        Object: { replacement: 'object' },
+        'Object<>': { replacement: 'Record<>' },
+        object: 'object'
       },
       structuredTags: {
         const: {
           name: 'namepath-defining',
           required: ['name']
+        },
+        decorator: {
+          name: 'none'
         },
         enum: {
           name: 'namepath-defining',
