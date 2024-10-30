@@ -1,6 +1,6 @@
-# REPOSITORY INFRASTRUCTURE SETTINGS
+# REPOSITORY INFRASTRUCTURE
+# https://github.com/flex-development/repostructure-action
 ---
-# https://docs.github.com/rest/branches/branch-protection#update-branch-protection
 branches:
   - name: main
     protection:
@@ -23,32 +23,31 @@ branches:
         checks:
           - context: add-to-project
           - context: auto-merge
+          - context: auto-review
           - context: build
-          - context: codecov/patch
-            app_id: 254
-          - context: codecov/project
-            app_id: 254
+          - context: changelog
           - context: commitlint
-          - context: dependabot-auto
+          - context: dependabot-dedupe
           - context: format
           - context: gitguardian
           - context: lint
           - context: spelling
           - context: test (16)
+          - context: test (17)
           - context: test (18)
           - context: test (19)
           - context: test (20)
-          - context: typescript (5.0.4)
-          - context: typescript (5.1.6)
-          - context: typescript (latest)
+          - context: test (21)
+          - context: test (22)
+          - context: test (23)
+          - context: typescript (5.6.3)
+          - context: typescript (5.7.0-beta)
         strict: true
       restrictions: null
-# https://docs.github.com/rest/deployments/environments#create-or-update-an-environment
 environments:
   - environment_name: gpr
   - environment_name: npm
   - environment_name: release
-# https://docs.github.com/rest/issues/labels#create-a-label
 labels:
   - name: flag:breaking-change
     description: contains changes that require major version bump
@@ -158,7 +157,6 @@ labels:
   - name: type:task
     description: project tasks
     color: 0052cc
-# https://docs.github.com/rest/repos/repos#update-a-repository
 repository:
   allow_auto_merge: true
   allow_merge_commit: false
@@ -192,7 +190,4 @@ repository:
   visibility: public
   vulnerability_alerts: true
   web_commit_signoff_required: true
-# https://docs.github.com/rest/teams/teams#add-or-update-team-repository-permissions
-teams:
-  - team_slug: dependabot-review
-    permission: triage
+teams: []
