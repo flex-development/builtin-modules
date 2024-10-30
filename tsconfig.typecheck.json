@@ -1,14 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2022"
+    "allowJs": false,
+    "checkJs": false,
+    "customConditions": ["types", "builtin-modules"]
   },
   "extends": "./tsconfig.json",
-  "include": [
-    "**/**.cts",
-    "**/**.mts",
-    "**/**.ts",
-    "**/.*.cts",
-    "**/.*.mts",
-    "**/.*.ts"
-  ]
+  "files": ["./vitest-env.d.mts"],
+  "include": ["./__tests__/**/*", "./src/**.mts"]
 }

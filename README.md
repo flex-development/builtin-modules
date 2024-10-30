@@ -1,16 +1,16 @@
 # builtin-modules
 
-[![github release](https://img.shields.io/github/v/release/flex-development/builtin-modules.svg?include_prereleases&sort=semver)](https://github.com/flex-development/builtin-modules/releases/latest)
+[![github release](https://img.shields.io/github/v/release/flex-development/builtin-modules.svg?include_prereleases\&sort=semver)](https://github.com/flex-development/builtin-modules/releases/latest)
 [![npm](https://img.shields.io/npm/v/@flex-development/builtin-modules.svg)](https://npmjs.com/package/@flex-development/builtin-modules)
 [![codecov](https://codecov.io/github/flex-development/builtin-modules/branch/main/graph/badge.svg?token=Rh9xvcgqdD)](https://codecov.io/github/flex-development/builtin-modules)
 [![module type: esm](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
 [![license](https://img.shields.io/github/license/flex-development/builtin-modules.svg)](LICENSE.md)
-[![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits&logoColor=ffffff)](https://conventionalcommits.org/)
-[![typescript](https://img.shields.io/badge/-typescript-3178c6?logo=typescript&logoColor=ffffff)](https://typescriptlang.org/)
-[![vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat&logo=vitest&logoColor=ffffff)](https://vitest.dev/)
-[![yarn](https://img.shields.io/badge/-yarn-2c8ebb?style=flat&logo=yarn&logoColor=ffffff)](https://yarnpkg.com/)
+[![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits\&logoColor=ffffff)](https://conventionalcommits.org)
+[![typescript](https://img.shields.io/badge/-typescript-3178c6?logo=typescript\&logoColor=ffffff)](https://typescriptlang.org)
+[![vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat\&logo=vitest\&logoColor=ffffff)](https://vitest.dev)
+[![yarn](https://img.shields.io/badge/-yarn-2c8ebb?style=flat\&logo=yarn\&logoColor=ffffff)](https://yarnpkg.com)
 
-Universal drop-in replacement for [`module.builtinModules`][1]
+Universal drop-in replacement for [`module.builtinModules`][modulebuiltinmodules]
 
 ## Contents
 
@@ -26,108 +26,157 @@ Universal drop-in replacement for [`module.builtinModules`][1]
 
 ## What is this?
 
-This package is a universal drop-in replacement for the [`builtinModules`][1] constant exported by [`node:module`][2].
+This package is a universal drop-in replacement for the [`builtinModules`][modulebuiltinmodules] constant exported by
+[`node:module`][node-module].
 
 ## When should I use this?
 
-This package exports an array containing the names of modules provided by Node.js. It can be used to not only verify
-that a module is maintained by Node.js, but to also determine if a module can be imported using a [`node:` URL][3].
+This package exports an array containing the names of modules provided by Node.js.
+It can be used to not only verify that a module is maintained by Node.js, but to also determine if a module can be
+imported using a [`node:` URL][node-imports].
 
 ## Install
 
-This package is [ESM only][4].
+This package is [ESM only][esm].
+
+In Node.js (version 18+) with [yarn][]:
 
 ```sh
 yarn add @flex-development/builtin-modules
 ```
 
-From Git:
-
-```sh
-yarn add @flex-development/builtin-modules@flex-development/builtin-modules
-```
-
 <blockquote>
   <small>
-    See <a href='https://yarnpkg.com/features/protocols#git'>Git - Protocols | Yarn</a>
-    &nbsp;for details on requesting a specific branch, commit, or tag.
+    See <a href='https://yarnpkg.com/protocol/git'>Git - Protocols | Yarn</a>
+    &nbsp;for details regarding installing from Git.
   </small>
 </blockquote>
 
+In Deno with [`esm.sh`][esmsh]:
+
+```ts
+import { builtinModules } from 'https://esm.sh/@flex-development/builtin-modules'
+```
+
+In browsers with [`esm.sh`][esmsh]:
+
+```html
+<script type="module">
+  import { builtinModules } from 'https://esm.sh/@flex-development/builtin-modules'
+</script>
+```
+
 ## Use
 
-```typescript
+```ts
 import { builtinModules } from '@flex-development/builtin-modules'
 
 /**
- * Set containing the names of modules provided by Node.js.
+ * List of all modules provided by Node.js.
  *
- * **Note**: Includes [`node:` URLs][1].
+ * > 👉 **Note**: Includes modules available only under the `node:` scheme (i.e.
+ * > `node:sea`, `node:sqlite`, `node:test`).
  *
- * [1]: https://nodejs.org/api/esm.html#node-imports
+ * @const {string[]} builtins
+ */
+const builtins: string[] = [
+  ...builtinModules,
+  'node:sea',
+  'node:test',
+  'node:sqlite',
+  'node:test/reporters'
+]
+
+/**
+ * Set of all modules provided by Node.js.
+ *
+ * > 👉 **Note**: Includes `node:` URLs.
  *
  * @const {Set<string>} BUILTIN_MODULES
  */
-const BUILTIN_MODULES = new Set(builtinModules.flatMap(m => [m, 'node:' + m]))
+const BUILTIN_MODULES: Set<string> = new Set(builtins.flatMap(m => {
+  return m.startsWith('node:') ? [m] : [m, 'node:' + m]
+}).sort((a, b) => a.localeCompare(b)))
 
 /**
- * Checks if the given module `name` is the name of a [builtin module][1].
+ * Check if `m` references a [builtin module][builtin-module].
  *
- * Allows for [`node:` URLs][2].
- *
- * [1]: https://nodejs.org/api/esm.html#builtin-modules
- * [2]: https://nodejs.org/api/esm.html#node-imports
+ * [builtin-module]: https://nodejs.org/api/esm.html#builtin-modules
  *
  * @example
- *  isBuiltin('node:module') // true
+ *  isBuiltin('@flex-development/builtin-modules') // false
+ * @example
+ *  isBuiltin('assert') // true
  * @example
  *  isBuiltin('fs/promises') // true
  * @example
- *  isBuiltin('@flex-development/builtin-modules') // false
+ *  isBuiltin('node:module') // true
+ * @example
+ *  isBuiltin('node:test/reporters') // true
+ * @example
+ *  isBuiltin('test') // false
  *
- * @param {string} name - Module name to evaluate
- * @return {boolean} `true` if `name` is name of builtin module
+ * @param {unknown} m
+ *  The URL or module name to check
+ * @return {boolean}
+ *  `true` if `name` references builtin module, `false` otherwise
  */
-const isBuiltin = (name: string): boolean => BUILTIN_MODULES.has(name)
+function isBuiltin(m: unknown): boolean {
+  return BUILTIN_MODULES.has(String(m))
+}
 
-console.debug(isBuiltin('node:module'))
-console.debug(isBuiltin('fs/promises'))
-console.debug(isBuiltin('@flex-development/builtin-modules'))
+console.log(isBuiltin('@flex-development/builtin-modules'))
+console.log(isBuiltin('assert'))
+console.log(isBuiltin('fs/promises'))
+console.log(isBuiltin('node:module'))
+console.log(isBuiltin('node:test/reporters'))
+console.log(isBuiltin('test'))
 ```
 
 ## API
 
-This package exports the identifier `builtinModules`.
+This package exports the identifier [`builtinModules`](#builtinmodules).
 
-There is no default export.
+The default export is also `builtinModules`.
 
 ### `builtinModules`
 
-An array containing the names of modules provided by Node.js.
+List of all modules provided by Node.js.
 
-The array is a **superset** of [`module.builtinModules`][1] given the running version of Node.js.
+The list is a **superset** of [`module.builtinModules`][modulebuiltinmodules] given the running version of Node.js.
 
-Possible use cases:
-
-- Check if a module can be imported using a [`node:` URL][3]
-- Check if a module is maintained by Node.js
+> 👉 **Note**: Modules available only under the `node:` scheme (i.e. `node:sea`, `node:sqlite`, `node:test`) are not
+> listed.
 
 ## Types
 
-This package is fully typed with [TypeScript][5].
+This package is fully typed with [TypeScript][].
 
 ## Related
 
-- [`is-builtin`][6] &mdash; Universal drop-in replacement for [`module.isBuiltin`][7]
+- [`is-builtin`][is-builtin] — Universal drop-in replacement for [`module.isBuiltin`][node-module-is-builtin]
 
 ## Contribute
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md).
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
-[1]: https://nodejs.org/api/module.html#modulebuiltinmodules
-[2]: https://nodejs.org/api/module.html
-[3]: https://nodejs.org/api/esm.html#node-imports
-[4]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
-[5]: https://www.typescriptlang.org
-[6]: https://github.com/flex-development/is-builtin
-[7]: https://nodejs.org/api/module.html#moduleisbuiltinmodulename
+This project has a [code of conduct](./CODE_OF_CONDUCT.md). By interacting with this repository, organization, or
+community you agree to abide by its terms.
+
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[esmsh]: https://esm.sh
+
+[is-builtin]: https://github.com/flex-development/is-builtin
+
+[modulebuiltinmodules]: https://nodejs.org/api/module.html#modulebuiltinmodules
+
+[node-imports]: https://nodejs.org/api/esm.html#node-imports
+
+[node-module-is-builtin]: https://nodejs.org/api/module.html#moduleisbuiltinmodulename
+
+[node-module]: https://nodejs.org/api/module.html
+
+[typescript]: https://www.typescriptlang.org
+
+[yarn]: https://yarnpkg.com
