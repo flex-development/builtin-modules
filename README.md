@@ -83,8 +83,7 @@ const builtins: string[] = [
   ...builtinModules,
   'node:sea',
   'node:test',
-  'node:sqlite',
-  'node:test/reporters'
+  'node:sqlite'
 ]
 
 /**
@@ -110,6 +109,8 @@ const BUILTIN_MODULES: Set<string> = new Set(builtins.flatMap(m => {
  * @example
  *  isBuiltin('fs/promises') // true
  * @example
+ *  isBuiltin(new URL('node:os')) // true
+ * @example
  *  isBuiltin('node:module') // true
  * @example
  *  isBuiltin('node:test/reporters') // true
@@ -117,9 +118,9 @@ const BUILTIN_MODULES: Set<string> = new Set(builtins.flatMap(m => {
  *  isBuiltin('test') // false
  *
  * @param {unknown} m
- *  The URL or module name to check
+ *  The thing to check
  * @return {boolean}
- *  `true` if `name` references builtin module, `false` otherwise
+ *  `true` if `m` references builtin module, `false` otherwise
  */
 function isBuiltin(m: unknown): boolean {
   return BUILTIN_MODULES.has(String(m))
