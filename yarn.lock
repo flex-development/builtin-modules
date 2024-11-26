@@ -1615,7 +1615,7 @@ __metadata:
     sh-syntax: "npm:0.4.2"
     trash-cli: "npm:6.0.0"
     ts-dedent: "npm:2.2.0"
-    typescript: "npm:5.7.0-beta"
+    typescript: "npm:5.7.2"
     typescript-eslint: "npm:8.16.0"
     unified: "npm:11.0.5"
     vfile: "npm:6.0.3"
@@ -11238,13 +11238,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.7.0-beta":
-  version: 5.7.0-beta
-  resolution: "typescript@npm:5.7.0-beta"
+"typescript@npm:5.7.2":
+  version: 5.7.2
+  resolution: "typescript@npm:5.7.2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/4edffe5624a80b899e45d2de05014a09247133b2c446811ff9a84e708c360d48930b20924c3418f3dbf104ef3c123e4977ee4e5ec2be67b4a5c0fc9e71052c38
+  checksum: 10/4caa3904df69db9d4a8bedc31bafc1e19ffb7b24fbde2997a1633ae1398d0de5bdbf8daf602ccf3b23faddf1aeeb9b795223a2ed9c9a4fdcaf07bfde114a401a
   languageName: node
   linkType: hard
 
@@ -11258,13 +11258,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.7.0-beta#optional!builtin<compat/typescript>":
-  version: 5.7.0-beta
-  resolution: "typescript@patch:typescript@npm%3A5.7.0-beta#optional!builtin<compat/typescript>::version=5.7.0-beta&hash=cef18b"
+"typescript@patch:typescript@npm%3A5.7.2#optional!builtin<compat/typescript>":
+  version: 5.7.2
+  resolution: "typescript@patch:typescript@npm%3A5.7.2#optional!builtin<compat/typescript>::version=5.7.2&hash=cef18b"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/eb91d3ef54b409df6e000926eb788855bd815da1adec4e967e0092f8e61352b9e42d10da42ac79c2f4a04ce6b2cc545678e1a41db734f865d20c67baad6b1a8a
+  checksum: 10/ff27fc124bceb8969be722baa38af945b2505767cf794de3e2715e58f61b43780284060287d651fcbbdfb6f917f4653b20f4751991f17e0706db389b9bb3f75d
   languageName: node
   linkType: hard
 
